@@ -3,33 +3,11 @@
 #include <string.h>
 #include <omp.h>
 
-/* count sort serial */
-double count_sort_serial(double a[], int n) {
-	int i, j, count;
-	double *temp;
-	double start, end, duracao;
-
-	temp = (double *)malloc(n*sizeof(double));
-
-	start = omp_get_wtime();
-	for (i = 0; i < n; i++) {
-		count = 0;
-		for (j = 0; j < n; j++)
-			if (a[j] < a[i])
-				count++;
-			else if (a[j] == a[i] && j < i)
-				count++;
-		temp[count] = a[i];
-	}
-	end = omp_get_wtime();
-
-	duracao = end - start;
-
-	memcpy(a, temp, n*sizeof(double));
-	free(temp);
-
-	return duracao;
-}
+/*
+ * Nome: Yuri Soares Olive
+ * RA: 148265
+ * T1 - Count Sort em Paralelo
+ */
 
 /* count sort parallel */
 double count_sort_parallel(double a[], int n, int nt) {
@@ -40,7 +18,7 @@ double count_sort_parallel(double a[], int n, int nt) {
 	temp = (double *)malloc(n*sizeof(double));
 
 	start = omp_get_wtime();
-#   pragma omp parallel for num_threads(nt)
+#   pragma omp parallel for num_threads(nt) default(none) private(i, j, count) shared(n, a, temp)
 	for (i = 0; i < n; i++) {
 		count = 0;
 		for (j = 0; j < n; j++)
@@ -62,22 +40,21 @@ double count_sort_parallel(double a[], int n, int nt) {
 
 int main(int argc, char * argv[]) {
 	int i, n, nt;
-	double  * a, t_s, t_p;
+	double  * a, t_p;
 
 	scanf("%d",&nt);
 	
 	/* numero de valores */
 	scanf("%d",&n);
 
-	/* aloca os vetores de valores para o teste em serial(b) e para o teste em paralelo(a) */
+	/* aloca os vetores de valores para o teste em paralelo(a) */
 	a = (double *)malloc(n*sizeof(double));
 
 	/* entrada dos valores */
 	for(i=0;i<n;i++)
 		scanf("%lf",&a[i]);
 	
-	/* chama as funcoes de count sort em paralelo e em serial */
-	//t_s = count_sort_serial(a,n);
+	/* chama a funcao de count sort em paralelo */
 	t_p = count_sort_parallel(a,n,nt);
 
 	/* Imprime o vetor ordenado */
@@ -86,8 +63,7 @@ int main(int argc, char * argv[]) {
 
 	printf("\n");
 
-	/* imprime os tempos obtidos e o speedup */
-	//printf("%lf\n",t_s);
+	/* imprime os tempo obtido */
 	printf("%lf\n",t_p);
 
 	return 0;
