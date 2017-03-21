@@ -4,8 +4,8 @@ cpu family	: 6
 model		: 58
 model name	: Intel(R) Core(TM) i5-3570 CPU @ 3.40GHz
 stepping	: 9
-microcode	: 0x12
-cpu MHz		: 1600.805
+microcode	: 0x1c
+cpu MHz		: 1968.322
 cache size	: 6144 KB
 physical id	: 0
 siblings	: 4
@@ -19,7 +19,7 @@ cpuid level	: 13
 wp		: yes
 flags		: fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush dts acpi mmx fxsr sse sse2 ss ht tm pbe syscall nx rdtscp lm constant_tsc arch_perfmon pebs bts rep_good nopl xtopology nonstop_tsc aperfmperf eagerfpu pni pclmulqdq dtes64 monitor ds_cpl vmx smx est tm2 ssse3 cx16 xtpr pdcm pcid sse4_1 sse4_2 x2apic popcnt tsc_deadline_timer aes xsave avx f16c rdrand lahf_lm epb tpr_shadow vnmi flexpriority ept vpid fsgsbase smep erms xsaveopt dtherm ida arat pln pts
 bugs		:
-bogomips	: 6784.56
+bogomips	: 6784.77
 clflush size	: 64
 cache_alignment	: 64
 address sizes	: 36 bits physical, 48 bits virtual
@@ -31,8 +31,8 @@ cpu family	: 6
 model		: 58
 model name	: Intel(R) Core(TM) i5-3570 CPU @ 3.40GHz
 stepping	: 9
-microcode	: 0x12
-cpu MHz		: 1599.975
+microcode	: 0x1c
+cpu MHz		: 1872.033
 cache size	: 6144 KB
 physical id	: 0
 siblings	: 4
@@ -46,7 +46,7 @@ cpuid level	: 13
 wp		: yes
 flags		: fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush dts acpi mmx fxsr sse sse2 ss ht tm pbe syscall nx rdtscp lm constant_tsc arch_perfmon pebs bts rep_good nopl xtopology nonstop_tsc aperfmperf eagerfpu pni pclmulqdq dtes64 monitor ds_cpl vmx smx est tm2 ssse3 cx16 xtpr pdcm pcid sse4_1 sse4_2 x2apic popcnt tsc_deadline_timer aes xsave avx f16c rdrand lahf_lm epb tpr_shadow vnmi flexpriority ept vpid fsgsbase smep erms xsaveopt dtherm ida arat pln pts
 bugs		:
-bogomips	: 6787.98
+bogomips	: 6788.24
 clflush size	: 64
 cache_alignment	: 64
 address sizes	: 36 bits physical, 48 bits virtual
@@ -58,8 +58,8 @@ cpu family	: 6
 model		: 58
 model name	: Intel(R) Core(TM) i5-3570 CPU @ 3.40GHz
 stepping	: 9
-microcode	: 0x12
-cpu MHz		: 1599.975
+microcode	: 0x1c
+cpu MHz		: 2000.280
 cache size	: 6144 KB
 physical id	: 0
 siblings	: 4
@@ -73,7 +73,7 @@ cpuid level	: 13
 wp		: yes
 flags		: fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush dts acpi mmx fxsr sse sse2 ss ht tm pbe syscall nx rdtscp lm constant_tsc arch_perfmon pebs bts rep_good nopl xtopology nonstop_tsc aperfmperf eagerfpu pni pclmulqdq dtes64 monitor ds_cpl vmx smx est tm2 ssse3 cx16 xtpr pdcm pcid sse4_1 sse4_2 x2apic popcnt tsc_deadline_timer aes xsave avx f16c rdrand lahf_lm epb tpr_shadow vnmi flexpriority ept vpid fsgsbase smep erms xsaveopt dtherm ida arat pln pts
 bugs		:
-bogomips	: 6788.21
+bogomips	: 6788.63
 clflush size	: 64
 cache_alignment	: 64
 address sizes	: 36 bits physical, 48 bits virtual
@@ -85,8 +85,8 @@ cpu family	: 6
 model		: 58
 model name	: Intel(R) Core(TM) i5-3570 CPU @ 3.40GHz
 stepping	: 9
-microcode	: 0x12
-cpu MHz		: 1599.975
+microcode	: 0x1c
+cpu MHz		: 1977.661
 cache size	: 6144 KB
 physical id	: 0
 siblings	: 4
@@ -100,7 +100,7 @@ cpuid level	: 13
 wp		: yes
 flags		: fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush dts acpi mmx fxsr sse sse2 ss ht tm pbe syscall nx rdtscp lm constant_tsc arch_perfmon pebs bts rep_good nopl xtopology nonstop_tsc aperfmperf eagerfpu pni pclmulqdq dtes64 monitor ds_cpl vmx smx est tm2 ssse3 cx16 xtpr pdcm pcid sse4_1 sse4_2 x2apic popcnt tsc_deadline_timer aes xsave avx f16c rdrand lahf_lm epb tpr_shadow vnmi flexpriority ept vpid fsgsbase smep erms xsaveopt dtherm ida arat pln pts
 bugs		:
-bogomips	: 6788.29
+bogomips	: 6788.53
 clflush size	: 64
 cache_alignment	: 64
 address sizes	: 36 bits physical, 48 bits virtual

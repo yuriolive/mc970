@@ -7,7 +7,7 @@ void producer_consumer(int *buffer, int size, int *vec, int n, int thread_count)
 	int i, j;
 	long long unsigned int k = 0, sum = 0;
 
-#   pragma omp parallel num_threads(thread_count) default(none) shared(n, size, buffer, vec, sum) private(i, j) 
+#   pragma omp parallel num_threads(thread_count) default(none) shared(n, size, buffer, vec) private(i, j) reduction(+: sum)
 	for(i=0;i<n;i++) {
 		if(i % 2 == 0) {	// PRODUTOR
 #           pragma omp for			
@@ -17,7 +17,6 @@ void producer_consumer(int *buffer, int size, int *vec, int n, int thread_count)
 		} else {	// CONSUMIDOR
 #       pragma omp for
 			for(j=0;j<size;j++) {
-#               pragma omp atomic
 				sum += buffer[j];
 			}
 		}
