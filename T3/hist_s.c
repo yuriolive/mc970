@@ -6,6 +6,19 @@
 #include <sys/time.h>
 #include <pthread.h>
 
+typedef struct {
+    double min;
+    double max;
+    int *vet;
+    int nbins;
+    double h;
+    double *val;
+    int nval;
+} Args;
+
+/* variável global acessivel por todas as threads */
+long unsigned int thread_count;
+
 /* funcao que calcula o minimo valor em um vetor */
 double min_val(double * vet,int nval) {
 	int i;
@@ -57,15 +70,45 @@ int * count(double min, double max, int * vet, int nbins, double h, double * val
 	return vet;
 }
 
+/* conta quantos valores no vetor estao entre o minimo e o maximo passados como parametros */
+void * count_parallel(void * count_args) {
+	Args * args = (Args *) count_args;
+	int i, j, count, *vet, nbins, nval;
+	double min, max, h, *val, min_t, max_t;
+	
+	min = args->min;
+    max = args->max;
+    vet = args->vet;
+    nbins = args->nbins;
+    h = args->h;
+    val = args->val;
+    nval = args->nval;
+
+	for(j=0;j<nbins;j++) {
+		count = 0;
+		min_t = min + j*h;
+		max_t = min + (j+1)*h;
+		for(i=0;i<nval;i++) {
+			if(val[i] <= max_t && val[i] > min_t) {
+				count++;
+			}
+		}
+
+		vet[j] = count;
+	}
+
+}
+
 int main(int argc, char * argv[]) {
 	double h, *val, max, min;
-	int n, nval, i, *vet, size;
-	long unsigned int duracao;
+	int n, nval, i, *vet;
+	long unsigned int duracao, thread;
 	struct timeval start, end;
 	pthread_t∗ thread_handles;
+	Args * count_args;
 
     /* numero de threads */
-	scanf("%d",&thread);
+	scanf("%lu",&thread_count);
 	/* entrada do numero de dados */
 	scanf("%d",&nval);
 	/* numero de barras do histograma a serem calculadas */
@@ -74,6 +117,8 @@ int main(int argc, char * argv[]) {
 	/* vetor com os dados */
 	val = (double *)malloc(nval*sizeof(double));
 	vet = (int *)malloc(n*sizeof(int));
+	thread_handles = malloc(thread_count∗sizeof(pthread_t));
+	count_args = malloc(thread_count∗sizeof(Args));
 
 	/* entrada dos dados */
 	for(i=0;i<nval;i++) {
@@ -90,11 +135,19 @@ int main(int argc, char * argv[]) {
 	gettimeofday(&start, NULL);
 
 
-
+    /* cria as threads */
+    for(thread = 0; thread < thread_count; thread++) {
+        pthread_create(&thread_handles[thread], NULL, count_parallel, &count_args[thread]);
+    }
+    
+    /* junta as threads */
+    for(thread = 0; thread < thread_count; thread++) {
+        pthread_join(thread_handles[thread], NULL);
+    }
+        
+    
 	/* chama a funcao */
-	vet = count(min, max, vet, n, h, val, nval);
-
-
+	//vet = count(min, max, vet, n, h, val, nval);
 
 	gettimeofday(&end, NULL);
 
@@ -119,6 +172,7 @@ int main(int argc, char * argv[]) {
 
 	free(vet);
 	free(val);
+	free(thread_handles);
 
 	return 0;
 }
