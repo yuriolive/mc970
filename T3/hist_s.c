@@ -131,6 +131,10 @@ int main(int argc, char * argv[]) {
 		scanf("%lf",&val[i]);
 	}
 
+	for(i=0; i<n;i++) {
+		pthread_mutex_init(&mutex[i], NULL);
+	}
+
 	/* calcula o minimo e o maximo valores inteiros */
 	min = floor(min_val(val,nval));
 	max = ceil(max_val(val,nval));
@@ -200,6 +204,10 @@ int main(int argc, char * argv[]) {
 	free(vet);
 	free(val);
 	free(thread_handles);
+	for(i=0; i<n;i++) {
+		pthread_mutex_destroy(&mutex[i], NULL);
+	}
+	pthread_exit(NULL);
 
 	return 0;
 }
